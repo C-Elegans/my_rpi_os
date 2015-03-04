@@ -28,6 +28,9 @@ enable_interrupts:
    mrs r0,cpsr
    bic r0,r0,#0x80
    msr cpsr_c,r0
+   cps #0b10010
+   mov sp,#0x4000
+   cps #0b10011
    ldr r0,=0x20200000
    mov r1,#7
    lsl r1,#18
