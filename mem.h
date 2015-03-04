@@ -5,3 +5,5 @@ int GET32(int mem);
 int GET8(int mem);
 int GETPC();
 void dummy();
+void led_on();
+void led_off();

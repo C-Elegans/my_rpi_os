@@ -13,17 +13,22 @@ start.o: start.s
 	$(ARMGNU)-as start.s -o start.o 
 timer.o: timer.s timer.h
 	$(ARMGNU)-as timer.s -o timer.o
-
+interrupt.o: interrupt.s
+	$(ARMGNU)-as interrupt.s -o interrupt.o
 main.o: main.c
 	$(ARMGNU)-gcc $(COPS) -c main.c -o main.o
 video.o: video.c video.h
 	$(ARMGNU)-gcc $(COPS) -c video.c -o video.o
 uart.o: uart.c uart.h
 	$(ARMGNU)-gcc $(COPS) -c uart.c -o uart.o
-cstdlib.o: cstdlib.c
-	$(ARMGNU)-gcc $(COPS) -c cstdlib.c -o cstdlib.o
-cstdlib.elf: memmap start.o main.o uart.o timer.o video.o cstdlib.o mem.h
-	$(ARMGNU)-ld start.o main.o uart.o timer.o video.o cstdlib.o -T memmap -o cstdlib.elf
+string.o: string.c
+	$(ARMGNU)-gcc $(COPS) -c string.c -o string.o
+math.o: math.c
+	$(ARMGNU)-gcc $(COPS) -c math.c -o math.o
+maths.o: math.s
+	$(ARMGNU)-as math.s -o maths.o
+cstdlib.elf: memmap start.o main.o uart.o timer.o video.o string.o mem.h math.o maths.o interrupt.o
+	$(ARMGNU)-ld start.o main.o uart.o timer.o video.o string.o math.o maths.o interrupt.o -T memmap -o cstdlib.elf
 
 cstdlib.bin: cstdlib.elf
 	$(ARMGNU)-objcopy cstdlib.elf -O binary cstdlib.bin

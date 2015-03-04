@@ -1,5 +1,6 @@
 #include "uart.h"
-
+#include "math.h"
+typedef enum { false, true } bool;
 void uart_init(){
 	unsigned int ra;
 
@@ -39,7 +40,23 @@ void uart_puts(char str[]){
 		i++;
 	}
 }
+void uart_putint(unsigned int input){
+	//char buf[15];
+	int div = 1000000000;
+	int test;
 
+	for(int i=0;i<10; i++){
+		test = input/div;
+		test = test %10;
+		//hexstring(div);
+		uart_putc(test + '0');
+		
+		
+		div = div/10;
+	}
+	uart_puts("\r\n");
+	
+}
 void hexstrings (unsigned int d)
 {
     //unsigned int ra;
