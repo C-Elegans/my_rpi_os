@@ -1,0 +1,23 @@
+#include "mem.h"
+void	*memchr(const void *, int, int);
+int	 memcmp(const void *, const void *, int);
+void	*memcpy(int, int, int);
+void	*memmove(void *, const void *, int);
+void	*memset(int, int, int);
+char	*strcat(char *, const char *);
+char	*strchr(const char *, int);
+int	 strcmp(const char *, const char *);
+int	 strcoll(const char *, const char *);
+char	*strcpy(char *, const char *);
+int	 strcspn(const char *, const char *);
+char	*strerror(int);
+int	 strlen(const char *);
+char	*strncat(char *, const char *, int);
+int	 strncmp(const char *, const char *, int);
+char	*strncpy(char *, const char *, int);
+char	*strpbrk(const char *, const char *);
+char	*strrchr(const char *, int);
+int	 strspn(const char *, const char *);
+char	*strstr(const char *, const char *);
+char	*strtok(char *, const char *);
+int	 strxfrm(char *, const char *, int);
