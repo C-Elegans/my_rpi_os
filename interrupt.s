@@ -69,7 +69,41 @@ led_off:
 	str r1,[r0,#28]
 	bx lr
 irq_handler:
-	stmdb sp!,{r0-r7,lr}
-	bl irq_handlerc
-	ldmia sp!,{r0-r7,lr}
+	stmdb sp!,{r0-r12,lr}
+	ldr r3,=delay
+	ldr r4,[r3]
+	add r4,r4,#1
+	cmp r4,#50
+	movls r4,#50
+	cmp r4,#0x0A00
+	movhi r4,#50
+	strh r4,[r3]
+	@lsl r4,#1
+	mov r0,r4
+	
+	ldr r2,=0x20003000
+	ldr r1,[r2,#4]
+	add r1,r4
+	str r1,[r2,#0x10]
+	mov r1,#2
+	str r1,[r2]
+	ldr r0,=0x20200000
+	ldr r1,=gpio4
+	ldr r2,[r1]
+	eor r2,r2,#1
+	str r2,[r1]
+	mov r1,#1
+	lsl r1,#4
+	cmp r2,#1
+	streq r1,[r0, #28]
+	strne r1,[r0, #40]
+	ldmia sp!,{r0-r12,lr}
 	subs pc, lr, #4
+
+.section .data
+.globl gpio4
+gpio4:
+	.int 0
+.globl delay
+delay:
+	.int 10

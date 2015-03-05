@@ -1,3 +1,4 @@
+#define GPFSEL0 0x20200000
 #define GPFSEL1 0x20200004
 #define GPSET0  0x2020001C
 #define GPCLR0  0x20200028
@@ -13,9 +14,7 @@
 #include "string.h"
 #include "math.h"
 volatile int on;
-void irq_handlerc(){
-	__asm("mov r0,sp	\n 	\
-		   bl hexstring":::"r0");
+void c_handlerc(){
 	if(on){
 		led_off();
 		on = 0;
@@ -28,6 +27,7 @@ void irq_handlerc(){
 	PUT32(C1, GET32(CLO)+1000000);
 }
 void notmain(){
+	PUT32(GPFSEL0,(1<<12));
 	int i;
 	on = 0;
 	PUT32(TIMER_BASE,2);
