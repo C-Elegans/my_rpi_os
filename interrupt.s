@@ -75,10 +75,10 @@ irq_handler:
 	add r4,r4,#1
 	cmp r4,#50
 	movls r4,#50
-	cmp r4,#0x0A00
+	cmp r4,#0x0C00
 	movhi r4,#50
 	strh r4,[r3]
-	@lsl r4,#1
+	lsl r4,#1
 	mov r0,r4
 	
 	ldr r2,=0x20003000
