@@ -27,7 +27,7 @@ void c_handlerc(){
 	PUT32(C1, GET32(CLO)+1000000);
 }
 void notmain(){
-	PUT32(GPFSEL0,(1<<12));
+	//PUT32(GPFSEL0,(1<<12));
 	int i;
 	on = 0;
 	PUT32(TIMER_BASE,2);

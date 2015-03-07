@@ -11,11 +11,11 @@ ldr pc,[pc,#20]			@;fiq
 .globl start_vector
 start_vector: .word _start
 undef_vector: .word hang
-svc_vector:	  .word svc_handler
+svc_vector:	  .word task_switch
 prefetch_vector: .word hang
 data_vector:	.word hang
-irq_vector: .word task_switch
-fiq_vector: .word task_switch
+irq_vector: .word hang
+fiq_vector: .word hang
 
 .globl enable_interrupts
 enable_interrupts:
@@ -31,15 +31,7 @@ enable_interrupts:
    cps #0b10010
    mov sp,#0x4000
    cps #0b10011
-   ldr r0,=0x20200000
-   mov r1,#7
-   lsl r1,#18
-   ldr r2,[r0,#4]
-   bic r2, r1
-   mov r1,#1
-   lsl r1,#18
-   orr r2,r1
-   str r2,[r0,#4]
+   
    bx lr
 
 

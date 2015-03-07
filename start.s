@@ -2,6 +2,7 @@
 _start:
 	bl enable_interrupts
 	mov sp,#0x8000
+	svc #0
 	bl notmain
 	mov r0,#0x18000
 	bl delayus
