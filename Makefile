@@ -1,4 +1,4 @@
-ARMGNU ?= arm-none-eabi
+ARMGNU ?=arm-none-eabi
 AOPS = --warn
 COPS = -Wall -Werror -O2 -nostdlib -nostartfiles -ffreestanding -std=c99 -ggdb3
 

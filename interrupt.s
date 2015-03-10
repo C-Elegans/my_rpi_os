@@ -31,7 +31,7 @@ enable_interrupts:
    cps #0b10010
    mov sp,#0x4000
    cps #0b10011
-   
+
    bx lr
 
 
@@ -60,5 +60,3 @@ led_off:
 	lsl r1,#16
 	str r1,[r0,#28]
 	bx lr
-
-	

@@ -1,5 +1,5 @@
 file cstdlib.elf
 target remote localhost:3333
 monitor halt
-layout asm
+#layout asm
 
