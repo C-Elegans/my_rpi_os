@@ -1,13 +1,25 @@
 .globl _start
 _start:
-	bl enable_interrupts
 	mov sp,#0x8000
-	svc #0
+	@;bl enable_interrupts
+	@;bl enable_cache
+
+	@;svc #0
 	bl notmain
 	mov r0,#0x18000
 	bl delayus
 	mov r0, #0x200000
 	bx r0
+.globl enable_cache
+enable_cache:
+
+	mrc p15, #0, r0, c1, c0, #2
+	push {r0}
+	bl hexstring
+	pop {r0}
+	@mov r0, #0x10000
+	@bl delayus
+
 .globl hang
 hang:
 	ldr r0,=0x20200000

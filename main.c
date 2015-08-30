@@ -27,19 +27,7 @@ void c_handlerc(){
 	PUT32(C1, GET32(CLO)+1000000);
 }
 void notmain(){
-	//PUT32(GPFSEL0,(1<<12));
-	int i;
-	on = 0;
-	PUT32(TIMER_BASE,2);
-	
-	PUT32(INTERRUPT_BASE + 0x21c,0xFFFFFFFF);
-	PUT32(INTERRUPT_BASE + 0x210,0x2);
-	//hexstring(GET32(INTERRUPT_BASE +0x204));
-	
-	i = GET32(CLO);
-	i += 1000000;
-	PUT32(C1, i);
-	delayus(50000);
-	//hexstring(GET32(INTERRUPT_BASE +0x204));
-	
+	uart_init();
+	uart_puts("Strlen of \"Hello World!\"\n");
+	hexstring(strlen("Hello World!"));
 }

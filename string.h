@@ -4,6 +4,7 @@ int	 memcmp(const void *, const void *, int);
 void	*memcpy(int, int, int);
 void	*memmove(void *, const void *, int);
 void	*memset(int, int, int);
+void	*fast_memset(int, int, int);
 char	*strcat(char *, const char *);
 char	*strchr(const char *, int);
 int	 strcmp(const char *, const char *);
