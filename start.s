@@ -2,7 +2,7 @@
 _start:
 	mov sp,#0x8000
 	@;bl enable_interrupts
-	@;bl enable_cache
+	bl start_l1cache
 
 	@;svc #0
 	bl notmain
@@ -10,15 +10,17 @@ _start:
 	bl delayus
 	mov r0, #0x200000
 	bx r0
-.globl enable_cache
-enable_cache:
 
-	mrc p15, #0, r0, c1, c0, #2
-	push {r0}
-	bl hexstring
-	pop {r0}
-	@mov r0, #0x10000
-	@bl delayus
+.globl start_l1cache
+start_l1cache:
+    mov r0, #0
+    mcr p15, 0, r0, c7, c7, 0 ;@ invalidate caches
+    mcr p15, 0, r0, c8, c7, 0 ;@ invalidate tlb
+    mrc p15, 0, r0, c1, c0, 0
+    orr r0,r0,#0x1000 ;@ instruction
+    orr r0,r0,#0x0004 ;@ data
+    mcr p15, 0, r0, c1, c0, 0
+    bx lr
 
 .globl hang
 hang:
