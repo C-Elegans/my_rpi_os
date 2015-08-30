@@ -30,7 +30,7 @@ math.o: math.c
 maths.o: math.s
 	$(ARMGNU)-as math.s -o maths.o
 cstdlib.elf: memmap start.o main.o uart.o timer.o video.o string.o mem.h math.o maths.o interrupt.o task_switch.o
-	$(ARMGNU)-ld start.o main.o uart.o timer.o video.o string.o math.o maths.o interrupt.o task_switch.o -T memmap -o cstdlib.elf
+	$(ARMGNU)-gcc -flto start.o main.o uart.o timer.o video.o string.o math.o maths.o interrupt.o task_switch.o -T memmap -o cstdlib.elf $(COPS)
 
 cstdlib.bin: cstdlib.elf
 	$(ARMGNU)-objcopy cstdlib.elf -O binary cstdlib.bin
