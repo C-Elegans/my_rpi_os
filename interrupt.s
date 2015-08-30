@@ -12,10 +12,15 @@ ldr pc,[pc,#20]			@;fiq
 start_vector: .word _start
 undef_vector: .word hang
 svc_vector:	  .word task_switch
-prefetch_vector: .word hang
-data_vector:	.word hang
-irq_vector: .word hang
-fiq_vector: .word hang
+prefetch_vector: .word null_interrupt
+data_vector:	.word null_interrupt
+irq_vector: .word null_interrupt
+fiq_vector: .word null_interrupt
+
+.globl null_interrupt
+null_interrupt:
+subs pc,lr,#4
+
 
 .globl enable_interrupts
 enable_interrupts:

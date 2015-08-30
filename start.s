@@ -1,7 +1,7 @@
 .globl _start
 _start:
 	mov sp,#0x8000
-	@;bl enable_interrupts
+	bl enable_interrupts
 	bl start_l1cache
 
 	@;svc #0
