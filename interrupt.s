@@ -38,8 +38,16 @@ enable_interrupts:
    cps #0b10011
 
    bx lr
-
-
+.globl add_task
+add_task:
+	ldr r3,=task_sp
+	ldr r2,[r3]
+	subs r2,#1
+	movlt pc,lr
+	ldr r1,=task_stack
+	str r0,[r1,r2 lsl #2]
+	str r2,[r3]
+	bx lr
 svc_handler:
 	stmdb sp!,{r0-r12,lr}
 	mov r4, r0
@@ -65,3 +73,10 @@ led_off:
 	lsl r1,#16
 	str r1,[r0,#28]
 	bx lr
+.section .data
+task_stack:
+	.skip 32,0
+task_sp:
+	.word 8
+current_task:
+	.word 0
