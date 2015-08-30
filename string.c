@@ -1,6 +1,8 @@
 #include "string.h"
 #include "uart.h"
+void	*memchr(const void * ptr , int c, int size){
 
+}
 void *memset(int ptr, int c, int size){
 
 	if(size > 3){
@@ -81,4 +83,9 @@ int strlen(const char* string){
 		length++;
 	}
 	return length;
+}
+char	*strcpy(char * dest, const char * src){
+	for(int i=0;i<strlen(src);i++){
+	dest[i] = src[i];
+	}
 }

@@ -27,7 +27,10 @@ void c_handlerc(){
 	PUT32(C1, GET32(CLO)+1000000);
 }
 void notmain(){
+	char c[40];
 	uart_init();
-	uart_puts("Strlen of \"Hello World!\"\n");
-	hexstring(strlen("Hello World!"));
+	uart_puts("Strlen of \"Hello World!\"\r\n");
+	strcpy(c,"hello, testing strcpy\r\n");
+	uart_puts(c);
+	uart_puts(c);
 }
