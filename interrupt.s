@@ -1,3 +1,46 @@
+.set FIQ, 0b10001
+.set IRQ, 0b10010
+.equ SVC, 0b10011
+.set SYS, 0b11111
+.set MASK, 0b11111
+.section .data
+reg_temp:
+	.word 0
+	.word 0
+.globl task_stack
+task_stack:
+	.word 0x80000
+	.word 0x84000
+	.word 0x88000
+	.word 0x8c000
+	.word 0x90000
+	.word 0x94000
+	.word 0x98000
+	.word 0x9c000
+task_sp:
+	.word 8
+current_task:
+	.word 0
+
+
+.section .text
+.macro set_mode mode
+	push {r1}
+	ldr r1,=reg_temp
+	str r0,[r1],#4 @auto increment
+	mov r0,r1
+	pop {r1}
+	str r1,[r0]
+	mov r1,r0
+	sub r1,#4
+	mrs r0,cpsr
+	bic r0,# MASK
+	orr r0,# \mode
+	msr cpsr,r0
+	ldr r0,[r1],#4
+	ldr r1,[r1]
+	
+.endm
 .globl interrupt
 interrupt:
 ldr pc,[pc,#20]		@;reset exception
@@ -40,14 +83,25 @@ enable_interrupts:
    bx lr
 .globl add_task
 add_task:
+	push {r4}
+	
 	ldr r3,=task_sp
-	ldr r2,[r3]
-	subs r2,#1
+	addr_tasksp .req r3
+	ldr r2,[addr_tasksp] 
+	tasksp .req r2
+	subs tasksp,#1
 	movlt pc,lr
 	ldr r1,=task_stack
-	str r0,[r1,r2 lsl #2]
-	str r2,[r3]
+	stack .req r4
+	ldr stack,[r1]
+	str r0,[stack,#-4]!
+	str stack,[r1,tasksp, lsl #2]
+	str tasksp,[addr_tasksp]
+	pop {r4}
 	bx lr
+	.unreq tasksp
+	.unreq addr_tasksp
+	.unreq stack
 svc_handler:
 	stmdb sp!,{r0-r12,lr}
 	mov r4, r0
@@ -73,10 +127,46 @@ led_off:
 	lsl r1,#16
 	str r1,[r0,#28]
 	bx lr
-.section .data
-task_stack:
-	.skip 32,0
-task_sp:
-	.word 8
-current_task:
-	.word 0
+print_taskstack:
+	ldr r4,=task_stack
+	mov r5,#0
+.loop:	mov r0,r4
+		bl hexstring
+		add r5,#1
+		cmp r5,#8
+		blt .loop
+	
+	bx lr
+.globl task_switch
+task_switch:
+	set_mode SYS
+	push {r0-r12,r14}
+	set_mode SVC
+	mov r0,lr
+	set_mode SYS
+	push {r0}
+	ldr r0,=task_stack
+	ldr r2,=current_task
+	ldr r1,[r2]
+	str sp, [r0,r1,lsl #2]
+loop:
+	push {r0-r3,lr}
+	mov r0,sp
+	bl print_taskstack
+	pop {r0-r3,lr}	
+	add r1,#1
+	and r1,#7
+	ldr r3,[r0,r1,lsl #2]
+	cmp r3,#0
+	beq loop
+	str r1,[r2]
+	mov sp,r3
+	pop {r0}
+	set_mode SVC
+	mov lr,r0
+	set_mode SYS
+	pop {r0-r12,r14}
+	set_mode SVC
+	subs pc,lr,#0
+	
+

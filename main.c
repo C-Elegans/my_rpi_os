@@ -13,7 +13,9 @@
 #include "video.h"
 #include "string.h"
 #include "math.h"
+#include "interrupt.h"
 volatile int on;
+extern int task_stack[];
 void c_handlerc(){
 	if(on){
 		led_off();
@@ -26,11 +28,18 @@ void c_handlerc(){
 	PUT32(TIMER_BASE,2); //clear interrupt
 	PUT32(C1, GET32(CLO)+1000000);
 }
+void task1(){
+	uart_puts("task1\r\n");
+}
 void notmain(){
-	char c[40];
-	uart_init();
-	uart_puts("Strlen of \"Hello World!\"\r\n");
-	strcpy(c,"hello, testing strcpy\r\n");
-	uart_puts(c);
-	uart_puts(c);
+	add_task(&task1);
+	for(int i=0;i<8;i++){
+		hexstrings(task_stack[i]);
+		uart_putc(' ');
+		hexstring(GET32(task_stack[i]));
+	}
+	__asm("nop");
+	__asm("nop");
+	__asm("nop");
+	__asm("svc #0");
 }
