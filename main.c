@@ -32,14 +32,5 @@ void task1(){
 	uart_puts("task1\r\n");
 }
 void notmain(){
-	add_task(&task1);
-	for(int i=0;i<8;i++){
-		hexstrings(task_stack[i]);
-		uart_putc(' ');
-		hexstring(GET32(task_stack[i]));
-	}
-	__asm("nop");
-	__asm("nop");
-	__asm("nop");
-	__asm("svc #0");
+	uart_puts("testing123\r\n");
 }
