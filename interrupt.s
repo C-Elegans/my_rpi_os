@@ -39,8 +39,8 @@ current_task:
 	msr cpsr,r0
 	ldr r0,[r1],#4
 	ldr r1,[r1]
-	
 .endm
+
 .globl interrupt
 interrupt:
 ldr pc,[pc,#20]		@;reset exception
