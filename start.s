@@ -36,10 +36,10 @@ hang$:
 .globl dummy
 dummy:
 	bx lr
-.globl PUT32
-PUT32:
-	str r1,[r0]
-	bx lr
+;@.globl PUT32
+;@PUT32:
+;@	str r1,[r0]
+;@	bx lr
 .globl PUT16
 PUT16:
 	strh r1,[r0]

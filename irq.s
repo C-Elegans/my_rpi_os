@@ -3,6 +3,10 @@
 .equ SVC, 0b10011
 .set SYS, 0b11111
 .set MASK, 0b11111
+.section .data
+reg_temp:
+	.word 0
+	.word 0
 .macro set_mode mode
 	push {r1}
 	ldr r1,=reg_temp
@@ -18,12 +22,9 @@
 	msr cpsr,r0
 	ldr r0,[r1],#4
 	ldr r1,[r1]
+.endm
 .section .text
 
-.globl enable_irq
-enable_irq:
-	set_mode
-bx lr
 
 
 .globl enable_timer
