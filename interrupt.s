@@ -57,7 +57,7 @@ undef_vector: .word hang
 svc_vector:	  .word task_switch
 prefetch_vector: .word null_interrupt
 data_vector:	.word null_interrupt
-irq_vector: .word null_interrupt
+irq_vector: .word irq_handler
 fiq_vector: .word null_interrupt
 
 .globl null_interrupt
@@ -79,8 +79,9 @@ enable_interrupts:
    cps #0b10010
    mov sp,#0x4000
    cps #0b10011
-
-   bx lr
+   push {lr}
+  @; bl enable_irq
+   pop {pc}
 .globl add_task
 add_task:
 	push {r4}

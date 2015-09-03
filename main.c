@@ -16,7 +16,7 @@
 #include "interrupt.h"
 volatile int on;
 extern int task_stack[];
-void c_handlerc(){
+void c_handler(){
 	if(on){
 		led_off();
 		on = 0;
@@ -27,9 +27,7 @@ void c_handlerc(){
 	}
 	PUT32(TIMER_BASE,2); //clear interrupt
 	PUT32(C1, GET32(CLO)+1000000);
-}
-void task1(){
-	uart_puts("task1\r\n");
+	uart_puts("stuff\r\n");
 }
 void notmain(){
 	uart_puts("testing123\r\n");

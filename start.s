@@ -1,7 +1,7 @@
 .globl _start
 _start:
 	mov sp,#0x8000
-	@bl enable_interrupts
+	bl enable_interrupts
 	@bl start_l1cache
 
 	@;svc #0
@@ -60,9 +60,4 @@ dummy:
 ;@GETPC:
 ;@	mov r0,lr
 ;@	bx lr
-.globl enable_irq
-enable_irq:
-    mrs r0,cpsr
-    bic r0,r0,#0x80
-    msr cpsr_c,r0
-    bx lr
+
