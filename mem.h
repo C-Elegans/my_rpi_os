@@ -1,9 +1,9 @@
-//void PUT32(int, int) ;
-//void PUT16(int, int);
-//void PUT8(int, int);
-//int GET32(int mem);
-//int GET8(int mem);
-//int GETPC();
+inline static void PUT32(int, int) ;
+inline static void PUT16(int, int);
+inline static void PUT8(int, int);
+inline static int GET32(int mem);
+inline static int GET8(int mem);
+inline static int GETPC();
 void dummy();
 void led_on();
 void led_off();

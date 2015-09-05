@@ -47,7 +47,7 @@ void uart_putint(unsigned int input){
 
 	for(int i=0;i<10; i++){
 		test = input/div;
-		test = test %10;
+		test = (unsigned int)test % (unsigned int)10;
 		//hexstring(div);
 		uart_putc(test + '0');
 		
