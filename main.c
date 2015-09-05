@@ -32,5 +32,7 @@ void task1(){
 	uart_puts("task1\r\n");
 }
 void notmain(){
+	uart_init();
 	uart_puts("testing123\r\n");
+	delayus(1000000);
 }

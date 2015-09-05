@@ -1,6 +1,6 @@
 ARMGNU ?=arm-none-eabi
 AOPS = --warn
-COPS = -Wall -O0 -nostdlib -nostartfiles -ffreestanding -std=c99 -ggdb3
+COPS = -Wall -O3 -nostdlib -nostartfiles -ffreestanding -std=c99 -ggdb3
 OBJS=start.o main.o uart.o timer.o video.o string.o mem.h math.o maths.o interrupt.o irq.o
 all: cstdlib.bin
 LDFLAGS=-flto
