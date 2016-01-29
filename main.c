@@ -14,6 +14,7 @@
 #include "string.h"
 #include "math.h"
 #include "interrupt.h"
+#include "malloc.h"
 volatile int on;
 extern int task_stack[];
 void c_handlerc(){
@@ -33,6 +34,10 @@ void task1(){
 }
 void notmain(){
 	uart_init();
-	uart_puts("testing123\r\n");
+	hexstring(__brk__);
+	char* str = sbrk((size_t)15);
+	strcpy(str,"Hello World!\r\n");
+	
+	uart_puts(str);
 	delayus(1000000);
 }
