@@ -34,10 +34,14 @@ void task1(){
 }
 void notmain(){
 	uart_init();
-	hexstring(__brk__);
-	char* str = sbrk((size_t)15);
+	hexstring(brk);
+	char* str = malloc(7);
+	strcpy(str,"Hello");
+	uart_puts(str);
+	hexstring(brk);
+	str = realloc(str,15);
 	strcpy(str,"Hello World!\r\n");
-	
+	hexstring(brk);
 	uart_puts(str);
 	delayus(1000000);
 }

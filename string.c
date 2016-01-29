@@ -1,24 +1,25 @@
 #include "string.h"
 #include "uart.h"
+#include "types.h"
 void	*memchr(const void * ptr , int c, int size){
-
+	return NULL;
 }
-void *memset(int ptr, int c, int size){
+void *memset(void* ptr, const void* c, int size){
 
 	if(size > 3){
-		int c2 = (c | (c<<8) | (c<<16) | (c<<24));
-		int x;
+		void* c2 = (void*)((int)c | ((int)c<<8) | ((int)c<<16) | ((int)c<<24));
+		void* x;
 		for(x = ptr + size; x > ptr + 3; x-=4){
 			//PUT32(x,c2);
 			__asm("str %[c2],[%[x]]"::[c2] "r" (c2), [x] "r" (x));
 		}
-		for(;x>ptr;x--){
-			PUT8(x,c);
+		for(;x>(void*)ptr;x--){
+			PUT8((int)x,(int)c);
 		}
 	}
 	else{
-		for(int x = ptr + size; x > ptr; x--){
-			PUT8(x,c);
+		for(void* x = ptr + size; x > ptr; x--){
+			PUT8((int)x,(int)c);
 		}
 	}
 	return (void *) ptr;
@@ -44,27 +45,27 @@ void *fast_memset(int ptr, int c, int size){
 	return (void *) ptr;
 }
 
-void *memcpy(int dest, int src, int size){
+void *memcpy(void* dest, void* src, int size){
 	
-	int dest2 = dest;
+	void* dest2 = dest;
 	if(src < dest){
 		if(size > 3){
 
-			int x;
+			void* x;
 			dest += size;
 			for(x = src + size; x > src + 3; x-=4){
-				PUT32(dest,GET32(x));
+				PUT32((int)dest,(int)GET32((int)x));
 				dest -=4;
 			}
 			for(;x>src;x--){
-				PUT8(dest,GET8(x));
+				PUT8((int)dest,GET8((int)x));
 				dest--;
 			}
 		}
 		else{
 			dest += size;
-			for(int i = src + size; i>src; i--){
-				PUT8(dest,GET8(i));
+			for(void* i = src + size; i>src; i--){
+				PUT8((int)dest,GET8((int)i));
 				dest--;
 
 			}
@@ -73,17 +74,17 @@ void *memcpy(int dest, int src, int size){
 	else{
 		if(size>3){
 			for(;dest<dest+size;dest+=4){
-				PUT32(dest,GET32(src));
+				PUT32((int)dest,GET32((int)src));
 				src += 4;
 			}
 			for(;dest<dest+size;dest++){
-				PUT8(dest,GET8(src));
+				PUT8((int)dest,GET8((int)src));
 				src++;
 			}
 		}
 		else{
 			for(;dest<dest+size;dest++){
-				PUT8(dest,GET8(src));
+				PUT8((int)dest,GET8((int)src));
 				src++;
 			}
 		

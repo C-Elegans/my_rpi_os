@@ -1,9 +1,9 @@
 #include "mem.h"
 void	*memchr(const void *, int, int);
 int	 memcmp(const void *, const void *, int);
-void	*memcpy(int, int, int);
+void	*memcpy(void*, void*, int);
 void	*memmove(void *, const void *, int);
-void	*memset(int, int, int);
+void	*memset(void*, const void*, int);
 void	*fast_memset(int, int, int);
 char	*strcat(char *, const char *);
 char	*strchr(const char *, int);

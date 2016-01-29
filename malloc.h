@@ -6,7 +6,7 @@
 //  Copyright © 2016 Michael Nolan. All rights reserved.
 //
 #include "types.h"
-extern void* __brk__;
+extern void* brk;
 void* sbrk(size_t);
 void* malloc(size_t);
 void* calloc(size_t,size_t);
