@@ -8,7 +8,7 @@
 
 #ifndef task_h
 #define task_h
-void add_task(void(*task)(void));
+void add_task(void(*func)(void));
 void yield();
 void exit();
 void task_init();

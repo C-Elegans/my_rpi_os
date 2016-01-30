@@ -1,11 +1,12 @@
 .globl _start
 _start:
 	mov sp,#0x8000
-	@bl enable_interrupts
-	@bl start_l1cache
-
-	@;svc #0
-	
+	bl enable_interrupts
+	mrs r0,cpsr
+	orr r0,#0x1f @system mode
+	msr cpsr,r0
+	mrs r0,cpsr
+	@bl hexstring
 	bl notmain
 	mov r0,#0x18000
 	bl delayus
@@ -32,6 +33,9 @@ hang:
 	mov r1,#1
 	lsl r1,#16
 	str r1,[r0,#40]
+	ldr r0,=hang_str
+	
+	bl uart_puts
 hang$:
 	b hang$
 .globl dummy
@@ -67,3 +71,5 @@ enable_irq:
     bic r0,r0,#0x80
     msr cpsr_c,r0
     bx lr
+hang_str:
+	.asciz "Hang\r\n"

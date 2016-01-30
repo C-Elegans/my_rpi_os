@@ -67,8 +67,13 @@ subs pc,lr,#4
 
 .globl enable_interrupts
 enable_interrupts:
+	push {lr}
 	bl task_init
+	
+
+
 	ldr   r0,=interrupt
+
    mov   r1,#0x0000
    ldmia   r0!,{r2,r3,r4,r5,r6,r7,r8,r9}
    stmia   r1!,{r2,r3,r4,r5,r6,r7,r8,r9}
@@ -81,7 +86,7 @@ enable_interrupts:
    ldr sp,=list_handle
    cps #0b10011
 
-   bx lr
+   pop {pc}
 
 svc_handler:
 	stmdb sp!,{r0-r12,lr}

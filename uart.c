@@ -1,5 +1,6 @@
 #include "uart.h"
 #include "math.h"
+#include "timer.h"
 typedef enum { false, true } bool;
 void uart_init(){
 	unsigned int ra;
@@ -27,10 +28,12 @@ void uart_init(){
     PUT32(AUX_MU_CNTL_REG,2);
 }
 void uart_putc(char c){
+#ifndef QEMU
 	while(1){
 		if(GET32(AUX_MU_LSR_REG)&0x20) break;
 	}
 	PUT32(AUX_MU_IO_REG,c);
+#endif
 }
 
 void uart_puts(char str[]){
@@ -39,6 +42,7 @@ void uart_puts(char str[]){
 		uart_putc(str[i]);
 		i++;
 	}
+	
 }
 void uart_putint(unsigned int input){
 	//char buf[15];
@@ -80,4 +84,5 @@ void hexstring (unsigned int d)
     hexstrings(d);
     uart_putc(0x0D);
     uart_putc(0x0A);
+	
 }

@@ -7,6 +7,7 @@
 #define C1 TIMER_BASE + 0x10
 #define INTERRUPT_BASE 0x2000B000
 #define FIQ INTERRUPT_BASE + 0x20C
+#include "task.h"
 #include "mem.h"
 #include "uart.h"
 #include "timer.h"
@@ -15,6 +16,7 @@
 #include "math.h"
 #include "interrupt.h"
 #include "malloc.h"
+
 
 volatile int on;
 extern int task_stack[];
@@ -32,6 +34,7 @@ void c_handlerc(){
 }
 void task1(){
 	uart_puts("task1\r\n");
+	__asm("svc #0");
 }
 void notmain(){
 	uart_init();
@@ -41,6 +44,9 @@ void notmain(){
 	uart_puts(str);
 	hexstring(brk);
 	str = realloc(str,15);
+	add_task(*task1);
+	__asm("svc #0");
+	return;
 	strcpy(str,"Hello World!\r\n");
 	hexstring(brk);
 	uart_puts(str);
