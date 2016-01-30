@@ -5,6 +5,7 @@ _start:
 	@bl start_l1cache
 
 	@;svc #0
+	
 	bl notmain
 	mov r0,#0x18000
 	bl delayus
