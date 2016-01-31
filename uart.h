@@ -22,3 +22,4 @@ void uart_puts(char str[]);
 void hexstrings( unsigned int d );
 void hexstring( unsigned int d );
 void uart_putint(unsigned int input);
+void uart_putfloat(float);

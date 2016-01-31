@@ -1,0 +1,287 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		0A63660B1C5C143600DA0A74 /* malloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = malloc.c; sourceTree = "<group>"; };
+		0A63660C1C5C143600DA0A74 /* malloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = malloc.h; sourceTree = "<group>"; };
+		0A63660D1C5C16F800DA0A74 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		0A63660E1C5C2BCB00DA0A74 /* task.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = task.c; sourceTree = "<group>"; };
+		0A63660F1C5C2BCB00DA0A74 /* task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = task.h; sourceTree = "<group>"; };
+		0A6366101C5C3DBE00DA0A74 /* interrupt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interrupt.h; sourceTree = "<group>"; };
+		0A6F2BD91C5D4D4C000147B5 /* gdbscript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gdbscript; sourceTree = "<group>"; };
+		0AABF9881C5AE79D00748406 /* interrupt.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = interrupt.s; sourceTree = "<group>"; };
+		0AABF9891C5AE79D00748406 /* irq.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = irq.s; sourceTree = "<group>"; };
+		0AABF98A1C5AE79D00748406 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		0AABF98B1C5AE79D00748406 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		0AABF98C1C5AE79D00748406 /* math.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math.c; sourceTree = "<group>"; };
+		0AABF98D1C5AE79D00748406 /* math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math.h; sourceTree = "<group>"; };
+		0AABF98E1C5AE79D00748406 /* maths.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = maths.s; sourceTree = "<group>"; };
+		0AABF98F1C5AE7A500748406 /* mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mem.h; sourceTree = "<group>"; };
+		0AABF9901C5AE7A500748406 /* memmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = memmap; sourceTree = "<group>"; };
+		0AABF9921C5AE7B200748406 /* start.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = start.s; sourceTree = "<group>"; };
+		0AABF9931C5AE7B200748406 /* string.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = string.c; sourceTree = "<group>"; };
+		0AABF9941C5AE7B200748406 /* string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string.h; sourceTree = "<group>"; };
+		0AABF9951C5AE7B200748406 /* task_switch.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = task_switch.s; sourceTree = "<group>"; };
+		0AABF9961C5AE7B200748406 /* timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timer.h; sourceTree = "<group>"; };
+		0AABF9971C5AE7B200748406 /* timer.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = timer.s; sourceTree = "<group>"; };
+		0AABF9981C5AE7B200748406 /* uart.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uart.c; sourceTree = "<group>"; };
+		0AABF9991C5AE7B200748406 /* uart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uart.h; sourceTree = "<group>"; };
+		0AABF99A1C5AE7B200748406 /* video.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = video.c; sourceTree = "<group>"; };
+		0AABF99B1C5AE7B200748406 /* video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = video.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0AABF97D1C5AE63500748406 = {
+			isa = PBXGroup;
+			children = (
+				0A6F2BD91C5D4D4C000147B5 /* gdbscript */,
+				0A63660E1C5C2BCB00DA0A74 /* task.c */,
+				0A63660D1C5C16F800DA0A74 /* types.h */,
+				0A63660B1C5C143600DA0A74 /* malloc.c */,
+				0A63660C1C5C143600DA0A74 /* malloc.h */,
+				0AABF9921C5AE7B200748406 /* start.s */,
+				0AABF9931C5AE7B200748406 /* string.c */,
+				0AABF9941C5AE7B200748406 /* string.h */,
+				0AABF9951C5AE7B200748406 /* task_switch.s */,
+				0AABF9961C5AE7B200748406 /* timer.h */,
+				0AABF9971C5AE7B200748406 /* timer.s */,
+				0AABF9981C5AE7B200748406 /* uart.c */,
+				0AABF9991C5AE7B200748406 /* uart.h */,
+				0AABF99A1C5AE7B200748406 /* video.c */,
+				0AABF99B1C5AE7B200748406 /* video.h */,
+				0AABF98F1C5AE7A500748406 /* mem.h */,
+				0AABF9901C5AE7A500748406 /* memmap */,
+				0A63660F1C5C2BCB00DA0A74 /* task.h */,
+				0AABF9881C5AE79D00748406 /* interrupt.s */,
+				0A6366101C5C3DBE00DA0A74 /* interrupt.h */,
+				0AABF9891C5AE79D00748406 /* irq.s */,
+				0AABF98A1C5AE79D00748406 /* main.c */,
+				0AABF98B1C5AE79D00748406 /* Makefile */,
+				0AABF98C1C5AE79D00748406 /* math.c */,
+				0AABF98D1C5AE79D00748406 /* math.h */,
+				0AABF98E1C5AE79D00748406 /* maths.s */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		0A6F2BD51C5D49ED000147B5 /* qemu */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION) CFLAGS=\"-DQEMU\"";
+			buildConfigurationList = 0A6F2BD81C5D49EE000147B5 /* Build configuration list for PBXLegacyTarget "qemu" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = qemu;
+			passBuildSettingsInEnvironment = 1;
+			productName = qemu;
+		};
+		0AABF9821C5AE63500748406 /* my_rpi_os */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 0AABF9851C5AE63500748406 /* Build configuration list for PBXLegacyTarget "my_rpi_os" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			dependencies = (
+			);
+			name = my_rpi_os;
+			passBuildSettingsInEnvironment = 1;
+			productName = my_rpi_os;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		0AABF97E1C5AE63500748406 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Michael Nolan";
+				TargetAttributes = {
+					0A6F2BD51C5D49ED000147B5 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					0AABF9821C5AE63500748406 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 0AABF9811C5AE63500748406 /* Build configuration list for PBXProject "my_rpi_os" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0AABF97D1C5AE63500748406;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0AABF9821C5AE63500748406 /* my_rpi_os */,
+				0A6F2BD51C5D49ED000147B5 /* qemu */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		0A6F2BD61C5D49EE000147B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "-DQEMU";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0A6F2BD71C5D49EE000147B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "-DQEMU";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0AABF9831C5AE63500748406 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		0AABF9841C5AE63500748406 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		0AABF9861C5AE63500748406 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0AABF9871C5AE63500748406 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A6F2BD81C5D49EE000147B5 /* Build configuration list for PBXLegacyTarget "qemu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A6F2BD61C5D49EE000147B5 /* Debug */,
+				0A6F2BD71C5D49EE000147B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0AABF9811C5AE63500748406 /* Build configuration list for PBXProject "my_rpi_os" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0AABF9831C5AE63500748406 /* Debug */,
+				0AABF9841C5AE63500748406 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0AABF9851C5AE63500748406 /* Build configuration list for PBXLegacyTarget "my_rpi_os" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0AABF9861C5AE63500748406 /* Debug */,
+				0AABF9871C5AE63500748406 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0AABF97E1C5AE63500748406 /* Project object */;
+}

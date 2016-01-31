@@ -86,3 +86,6 @@ void hexstring (unsigned int d)
     uart_putc(0x0A);
 	
 }
+void uart_putfloat(float f){
+	
+}

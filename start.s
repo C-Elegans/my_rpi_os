@@ -2,6 +2,7 @@
 _start:
 	mov sp,#0x8000
 	@bl enable_interrupts
+	bl enable_fpu
 	mrs r0,cpsr
 	orr r0,#0x1f @system mode
 	msr cpsr,r0
@@ -36,6 +37,15 @@ hang:
 	bl uart_puts
 hang$:
 	b hang$
+.globl enable_fpu
+enable_fpu:
+	mrc p15, 0, r0, c1, c0, 2
+    orr r0,r0,#0x300000 ;@ single precision
+    orr r0,r0,#0xC00000 ;@ double precision
+    mcr p15, 0, r0, c1, c0, 2
+    mov r0,#0x40000000
+    fmxr fpexc,r0
+bx lr
 .globl dummy
 dummy:
 	bx lr
