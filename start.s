@@ -1,12 +1,10 @@
 .globl _start
 _start:
 	mov sp,#0x8000
-	bl enable_interrupts
+	@bl enable_interrupts
 	mrs r0,cpsr
 	orr r0,#0x1f @system mode
 	msr cpsr,r0
-	mrs r0,cpsr
-	@bl hexstring
 	bl notmain
 	mov r0,#0x18000
 	bl delayus

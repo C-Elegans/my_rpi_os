@@ -38,17 +38,8 @@ void task1(){
 }
 void notmain(){
 	uart_init();
-	hexstring(brk);
-	char* str = malloc(7);
-	strcpy(str,"Hello");
-	uart_puts(str);
-	hexstring(brk);
-	str = realloc(str,15);
-	add_task(*task1);
-	__asm("svc #0");
-	return;
-	strcpy(str,"Hello World!\r\n");
-	hexstring(brk);
-	uart_puts(str);
-	delayus(1000000);
+	char* str = "1234567890";
+	char* str2 = strchr(str,'4');
+
+	uart_puts(str2);
 }

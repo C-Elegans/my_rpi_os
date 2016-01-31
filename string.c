@@ -96,7 +96,7 @@ void *memcpy(void* dest, void* src, int size){
 int strlen(const char* string){
 	int length = 0;
 	while(1){
-		if(GET8((int)string++)==0){
+		if(*(string++)==0){
 			break;
 		}
 		length++;
@@ -108,4 +108,30 @@ char	*strcpy(char * dest, const char * src){
 	dest[i] = src[i];
 	}
 	return dest;
+}
+char* strcat(char* dest, const char* src){
+	int len = strlen(dest);
+	dest += len;
+	strcpy(dest,src);
+	return dest;
+}
+char * strchr(const char* str, int c){
+	char chr = (char) c;
+	do{
+		if(*str == chr){
+			return (char*)str;
+		}
+	}while(*(str++));
+	return NULL;
+}
+int	 strcmp(const char *p1, const char *p2){
+	while(*p1){
+		if(*p2 == NULL)return 1;
+		if(*p1 > *p2) return 1;
+		if(*p1 < *p2) return -1;
+		p1++;
+		p2++;
+	}
+	if(*p1==NULL)return -1;
+	return 0;
 }
