@@ -107,14 +107,14 @@ char *strchr(const char *str, int c){
 	while (*(str++));
 	return NULL;
 }
-int      strcmp(const char *p1, const char *p2){
+int strcmp(const char *p1, const char *p2){
 	while (*p1) {
-		if (*p2 == NULL) return 1;
+		if (p2 == NULL) return 1;
 		if (*p1 > *p2) return 1;
 		if (*p1 < *p2) return -1;
 		p1++;
 		p2++;
 	}
-	if (*p1 == NULL) return -1;
+	if (p1 == NULL) return -1;
 	return 0;
 }

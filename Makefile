@@ -1,6 +1,6 @@
 ARMGNU ?=/Users/mnolan/bin/yagarto-4.7.2/bin/arm-none-eabi
 AOPS = --warn
-override CFLAGS+= -Wall -O3 -nostdlib -nostartfiles -ffreestanding -std=c99 -ggdb3
+override CFLAGS+= -Wall -O0 -nostdlib -nostartfiles -ffreestanding -std=c99 -ggdb3
 OBJS=start.o main.o uart.o timer.o video.o string.o mem.h math.o maths.o interrupt.o irq.o malloc.o task.o task_switch.o
 
 all: cstdlib.bin
