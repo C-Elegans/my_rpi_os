@@ -14,6 +14,7 @@
 		0A63660F1C5C2BCB00DA0A74 /* task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = task.h; sourceTree = "<group>"; };
 		0A6366101C5C3DBE00DA0A74 /* interrupt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interrupt.h; sourceTree = "<group>"; };
 		0A6F2BD91C5D4D4C000147B5 /* gdbscript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gdbscript; sourceTree = "<group>"; };
+		0A6F2BDC1C5EA584000147B5 /* uncrustify.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = uncrustify.cfg; sourceTree = "<group>"; };
 		0AABF9881C5AE79D00748406 /* interrupt.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = interrupt.s; sourceTree = "<group>"; };
 		0AABF9891C5AE79D00748406 /* irq.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = irq.s; sourceTree = "<group>"; };
 		0AABF98A1C5AE79D00748406 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
@@ -39,6 +40,7 @@
 		0AABF97D1C5AE63500748406 = {
 			isa = PBXGroup;
 			children = (
+				0A6F2BDC1C5EA584000147B5 /* uncrustify.cfg */,
 				0A6F2BD91C5D4D4C000147B5 /* gdbscript */,
 				0A63660E1C5C2BCB00DA0A74 /* task.c */,
 				0A63660D1C5C16F800DA0A74 /* types.h */,

@@ -14,6 +14,7 @@ clean:
 %.o: %.s Makefile
 	$(ARMGNU)-as -mfpu=vfp3 $< -o $@
 %.o: %.c Makefile
+	uncrustify -c uncrustify.cfg --replace --no-backup $<
 	$(ARMGNU)-gcc -mfpu=vfp3 $(CFLAGS) -c $< -o $@	
 
 cstdlib.elf: memmap $(OBJS) Makefile
