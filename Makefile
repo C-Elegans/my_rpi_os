@@ -14,7 +14,7 @@ clean:
 %.o: %.s Makefile
 	$(ARMGNU)-as -mfpu=vfp3 $< -o $@
 %.o: %.c Makefile
-	uncrustify -c uncrustify.cfg --replace --no-backup $<
+
 	$(ARMGNU)-gcc -mfpu=vfp3 $(CFLAGS) -c $< -o $@	
 
 cstdlib.elf: memmap $(OBJS) Makefile
@@ -27,3 +27,7 @@ cstdlib.bin: cstdlib.elf Makefile
 	
 qemu: cstdlib.elf
 	qemu-system-arm -kernel cstdlib.elf  -cpu arm1176 -m 256 -M versatilepb -S -s
+
+uncrustify:
+	uncrustify -c uncrustify.cfg --replace --no-backup *.c
+	uncrustify -c uncrustify.cfg --replace --no-backup *.h
