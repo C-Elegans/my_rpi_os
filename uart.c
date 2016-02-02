@@ -20,9 +20,13 @@ void uart_init(){
 	PUT32(GPFSEL1, ra);
 
 	PUT32(GPPUD, 0);
-	for (ra = 0; ra < 150; ra++) dummy(ra);
+	for (ra = 0; ra < 150; ra++) {
+		dummy(ra);
+	}
 	PUT32(GPPUDCLK0, (1 << 14));
-	for (ra = 0; ra < 150; ra++) dummy(ra);
+	for (ra = 0; ra < 150; ra++) {
+		dummy(ra);
+	}
 	PUT32(GPPUDCLK0, 0);
 
 	PUT32(AUX_MU_CNTL_REG, 2);

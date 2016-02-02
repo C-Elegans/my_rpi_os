@@ -37,8 +37,13 @@ void task1(){
 }
 void notmain(){
 	uart_init();
-	char *str = "1234567890";
-	char *str2 = strchr(str, '4');
+	char *str = "192.168.1.1\r\n";
+	char *token = strtok(str,".");
+	while(token != NULL){
 
-	uart_puts(str2);
+		uart_puts(token);
+		uart_puts("\r\n");
+		token = strtok(NULL,".");
+	}
+	
 }
