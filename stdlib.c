@@ -61,11 +61,11 @@ char *internal_itoa(int num, char *str, int radix, int u){
 	*ptr = 0;
 	return str;
 }
-char* itoa(int num,char *str, int radix){
-	return internal_itoa(num,str,radix,0);
+char *itoa(int num, char *str, int radix){
+	return internal_itoa(num, str, radix, 0);
 }
-char* utoa(unsigned int num,char *str, int radix){
-	return internal_itoa(num,str,radix,1);
+char *utoa(unsigned int num, char *str, int radix){
+	return internal_itoa(num, str, radix, 1);
 }
 char *internal_ltoa(long num, char *str, int radix, int u){
 	if (radix < 2 || radix > 16) return NULL;
@@ -91,21 +91,19 @@ char *internal_ltoa(long num, char *str, int radix, int u){
 	*ptr = 0;
 	return str;
 }
-char* ltoa(long num,char *str, int radix){
-	return internal_ltoa(num,str,radix,0);
+char *ltoa(long num, char *str, int radix){
+	return internal_ltoa(num, str, radix, 0);
 }
-char* ultoa(unsigned long num,char *str, int radix){
-	return internal_itoa(num,str,radix,1);
+char *ultoa(unsigned long num, char *str, int radix){
+	return internal_itoa(num, str, radix, 1);
 }
 static unsigned long int next = 1;
 
-int rand(void) // RAND_MAX assumed to be 32767
-{
+int rand(void){ // RAND_MAX assumed to be 32767
 	next = next * 1103515245 + 12345;
-	return (unsigned int)(next/sizeof(int)) % RAND_MAX;
+	return (unsigned int)(next / sizeof(int)) % RAND_MAX;
 }
 
-void srand(unsigned int seed)
-{
+void srand(unsigned int seed){
 	next = seed;
 }
