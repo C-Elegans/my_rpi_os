@@ -38,13 +38,9 @@ void task1(){
 void notmain(){
 	uart_init();
 	char str[33];
-	for (int i = 2; i <= 16; i++) {
-		uart_puts("base: ");
-		itoa(i, str, 10);
-		uart_puts(str);
-		uart_puts(" : ");
-		itoa(969283839, str, i);
-		uart_puts(str);
+	srand(getTimeStamp());
+	for (int i = 0; i <= 10; i++) {
+		uart_puts(itoa(rand(),str,10));
 		uart_puts("\r\n");
 	}
 }
