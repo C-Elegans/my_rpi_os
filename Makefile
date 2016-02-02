@@ -1,16 +1,17 @@
 ARMGNU ?=/Users/mnolan/bin/yagarto-4.7.2/bin/arm-none-eabi
 AOPS = --warn
-override CFLAGS+= -Wall -Os -nostdlib -nostartfiles -ffreestanding -std=c99 -ggdb3
+override CFLAGS+= -Wall -Os -nostdlib -nostartfiles -ffreestanding -std=c99 -ggdb3 -flto
 OBJS=start.o main.o uart.o timer.o video.o string.o mem.h math.o maths.o stdlib.o interrupt.o irq.o malloc.o task.o task_switch.o
 
 all: cstdlib.bin
-LDFLAGS=-flto
+LDFLAGS=-flto -lgcc
 
 clean:
 	rm *.o
 	rm *.bin
 	rm *.elf
-	
+math.o:math.c
+	$(ARMGNU)-gcc -mfpu=vfp3 $(CFLAGS) -fno-lto -c math.c -o math.o
 %.o: %.s Makefile
 	$(ARMGNU)-as -mfpu=vfp3 $< -o $@
 %.o: %.c Makefile
