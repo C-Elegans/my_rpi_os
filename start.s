@@ -3,9 +3,13 @@ _start:
 	mov sp,#0x8000
 	@bl enable_interrupts
 	bl enable_fpu
+
 	mrs r0,cpsr
 	orr r0,#0x1f @system mode
 	msr cpsr,r0
+	ldr r0,=heap_start
+	ldr r1,=brk
+	str r0,[r1]
 	bl notmain
 	mov r0,#0x18000
 	bl delayus

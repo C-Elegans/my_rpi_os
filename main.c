@@ -17,7 +17,7 @@
 #include "interrupt.h"
 #include "malloc.h"
 #include "stdlib.h"
-
+extern int heap_start;
 volatile int on;
 extern int task_stack[];
 void c_handlerc(){
@@ -37,10 +37,4 @@ void task1(){
 }
 void notmain(){
 	uart_init();
-	char str[33];
-	srand(getTimeStamp());
-	for (int i = 0; i <= 10; i++) {
-		uart_puts(itoa(rand(),str,10));
-		uart_puts("\r\n");
-	}
 }

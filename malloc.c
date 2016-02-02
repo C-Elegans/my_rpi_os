@@ -8,7 +8,7 @@
 
 #include "malloc.h"
 #include "string.h"
-#define BRK_MAX    0x40000
+
 #define DEBUG
 void *brk = (void *)0x20000;
 
@@ -25,8 +25,6 @@ struct malloc_info {
 void *sbrk(size_t increment){
 	void *old_brk = brk;
 
-	if (((((size_t)brk + increment) + 3) & ~0x3) > BRK_MAX)
-		return NULL;
 	brk += increment;
 	brk = (void *)(((int)brk + 3) & ~0x3);
 	return old_brk;

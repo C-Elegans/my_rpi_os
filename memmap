@@ -13,6 +13,6 @@ SECTIONS
 
 	.rodata : { *(.rodata*) } > ram
 	.data : { *(.data*) } > ram
-
+heap_start = .;
     .context : { *(.context*) } > context
 }
