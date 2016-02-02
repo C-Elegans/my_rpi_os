@@ -16,7 +16,7 @@
 #include "math.h"
 #include "interrupt.h"
 #include "malloc.h"
-
+#include "stdlib.h"
 
 volatile int on;
 extern int task_stack[];
@@ -37,13 +37,14 @@ void task1(){
 }
 void notmain(){
 	uart_init();
-	char *str = "192.168.1.1\r\n";
-	char *token = strtok(str,".");
-	while(token != NULL){
-
-		uart_puts(token);
+	char str[33];
+	for (int i = 2; i <= 16; i++) {
+		uart_puts("base: ");
+		itoa(i, str, 10);
+		uart_puts(str);
+		uart_puts(" : ");
+		itoa(969283839, str, i);
+		uart_puts(str);
 		uart_puts("\r\n");
-		token = strtok(NULL,".");
 	}
-	
 }

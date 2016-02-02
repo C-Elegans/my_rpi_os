@@ -125,33 +125,33 @@ int strcmp(const char *p1, const char *p2){
 	if (p1 == NULL) return -1;
 	return 0;
 }
-char *strstr(const char * str , const char * pattern){
-	while(*str){
-		char* begin = (char*)str;
-		const char* p2= pattern;
-		while(*str && *p2 && *str == *p2){
+char *strstr(const char *str, const char *pattern){
+	while (*str) {
+		char *begin = (char *)str;
+		const char *p2 = pattern;
+		while (*str && *p2 && *str == *p2) {
 			str++;
 			p2++;
 		}
-		if(! *p2)return begin;
+		if (!*p2) return begin;
 		str = begin + 1;
 	}
 	return NULL;
-	
 }
-char* strtok(char* source , const char *find ){
-	static char* str;
-	if(source != NULL) str = source;
-	if(str == NULL) return NULL;
+char *strtok(char *source, const char *find){
+	static char *str;
+
+	if (source != NULL) str = source;
+	if (str == NULL) return NULL;
 	int len = strlen(find);
-	char* match = strstr(str,find);
-	if(match == NULL){
-		char* strprev = str;
+	char *match = strstr(str, find);
+	if (match == NULL) {
+		char *strprev = str;
 		str = NULL;
 		return strprev;
 	}
 	*match = 0;
-	char* ret = str;
+	char *ret = str;
 	str = match + len;
 	return ret;
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		0A3842D71C602FF60003F6B4 /* stdlib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = stdlib.c; sourceTree = "<group>"; };
+		0A3842D81C602FF60003F6B4 /* stdlib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stdlib.h; sourceTree = "<group>"; };
 		0A63660B1C5C143600DA0A74 /* malloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = malloc.c; sourceTree = "<group>"; };
 		0A63660C1C5C143600DA0A74 /* malloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = malloc.h; sourceTree = "<group>"; };
 		0A63660D1C5C16F800DA0A74 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
@@ -40,6 +42,8 @@
 		0AABF97D1C5AE63500748406 = {
 			isa = PBXGroup;
 			children = (
+				0A3842D71C602FF60003F6B4 /* stdlib.c */,
+				0A3842D81C602FF60003F6B4 /* stdlib.h */,
 				0A6F2BDC1C5EA584000147B5 /* uncrustify.cfg */,
 				0A6F2BD91C5D4D4C000147B5 /* gdbscript */,
 				0A63660E1C5C2BCB00DA0A74 /* task.c */,
@@ -264,6 +268,7 @@
 				0A6F2BD71C5D49EE000147B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0AABF9811C5AE63500748406 /* Build configuration list for PBXProject "my_rpi_os" */ = {
 			isa = XCConfigurationList;
