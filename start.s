@@ -10,6 +10,8 @@ _start:
 	ldr r0,=heap_start
 	ldr r1,=brk
 	str r0,[r1]
+	mov r0,#4
+	bl malloc
 	bl notmain
 	mov r0,#0x18000
 	bl delayus

@@ -17,6 +17,7 @@
 #include "interrupt.h"
 #include "malloc.h"
 #include "stdlib.h"
+#include "list.h"
 extern int heap_start;
 volatile int on;
 extern int task_stack[];
@@ -32,15 +33,25 @@ void c_handlerc(){
 	PUT32(C1, GET32(CLO) + 1000000);
 }
 void task1(){
-	uart_puts("task1\r\n");
+	//uart_puts("task1\r\n");
 	__asm("svc #0");
 }
 void notmain(){
 	uart_init();
-	char *str = malloc(300);
-	str = realloc(str, 49);
-	str = realloc(str, 200);
-	free(str);
-	char *str2 = malloc(25);
+	int* intptr = (int*)malloc(sizeof(int));
+	*intptr = 1;
+	
+	struct list* list = create_list(sizeof(int),intptr);
 	print_blocks();
+	for(int i=2;i<15;i++){
+		intptr =(int*) malloc(sizeof(int));
+		add_element(list,sizeof(int),intptr);
+	}
+	for(int i=0;i<12;i++){
+		struct list* list_prev = list;
+		list = list->next;
+		free(list_prev->payload);
+		remove_element(list);
+	}
+	
 }

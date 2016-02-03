@@ -146,7 +146,6 @@ void print_blocks(){
 
 	while (block != NULL) {
 		char str[33];
-		char str2[100];
 		puts("Block: ");
 		itoa((int)block, str, 16);
 		puts(str);
