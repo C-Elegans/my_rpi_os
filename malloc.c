@@ -17,9 +17,9 @@ struct malloc_info {
 	size_t			size;
 	struct malloc_info *	next;
 	int			free;
-#ifdef DEBUG
+
 	int			magic;
-#endif
+
 };
 #define BLOCK_SIZE sizeof(struct malloc_info)
 void *sbrk(size_t increment){

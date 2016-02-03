@@ -17,8 +17,8 @@
 #define AUX_MU_BAUD_REG 0x20215068
 #include "mem.h"
 void uart_init();
-void uart_putc(char c);
-void uart_puts(char str[]);
+void putc(char c);
+void puts(char str[]);
 void hexstrings(unsigned int d);
 void hexstring(unsigned int d);
 void uart_putint(unsigned int input);

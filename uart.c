@@ -31,7 +31,7 @@ void uart_init(){
 
 	PUT32(AUX_MU_CNTL_REG, 2);
 }
-void uart_putc(char c){
+void putc(char c){
 #ifndef QEMU
 	while (1)
 		if (GET32(AUX_MU_LSR_REG) & 0x20) break;
@@ -39,11 +39,11 @@ void uart_putc(char c){
 #endif
 }
 
-void uart_puts(char str[]){
+void puts(char str[]){
 	int i = 0;
 
 	while (str[i] != 0) {
-		uart_putc(str[i]);
+		putc(str[i]);
 		i++;
 	}
 }
@@ -56,12 +56,12 @@ void uart_putint(unsigned int input){
 		test = input / div;
 		test = (unsigned int)test % (unsigned int)10;
 		//hexstring(div);
-		uart_putc(test + '0');
+		putc(test + '0');
 
 
 		div = div / 10;
 	}
-	uart_puts("\r\n");
+	puts("\r\n");
 }
 void hexstrings(unsigned int d){
 	//unsigned int ra;
@@ -73,16 +73,16 @@ void hexstrings(unsigned int d){
 		rb -= 4;
 		rc = (d >> rb) & 0xF;
 		if (rc > 9) rc += 0x37; else rc += 0x30;
-		uart_putc(rc);
+		putc(rc);
 		if (rb == 0) break;
 	}
-	uart_putc(0x20);
+	putc(0x20);
 }
 //------------------------------------------------------------------------
 void hexstring(unsigned int d){
 	hexstrings(d);
-	uart_putc(0x0D);
-	uart_putc(0x0A);
+	putc(0x0D);
+	putc(0x0A);
 }
 void uart_putfloat(float f){
 }

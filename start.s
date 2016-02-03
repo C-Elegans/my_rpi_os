@@ -38,7 +38,7 @@ hang:
 	str r1,[r0,#40]
 	ldr r0,=hang_str
 	
-	bl uart_puts
+	bl puts
 hang$:
 	b hang$
 .globl enable_fpu
