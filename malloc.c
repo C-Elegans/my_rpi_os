@@ -102,6 +102,14 @@ void free(void *ptr){
 	struct malloc_info *block = ((struct malloc_info *)ptr) - 1;
 	block->free = 1;
 	block->magic = 0x55555555;
+	struct malloc_info* curblock = block->next;
+	int newsize = block->size;
+	while(curblock != NULL && curblock->free){
+		newsize += curblock->size + BLOCK_SIZE;
+		curblock = curblock->next;
+	}
+	block->size = newsize;
+	block->next = curblock;
 }
 void *calloc(size_t nelm, size_t elsize){
 	void *mem = malloc(nelm * elsize);
