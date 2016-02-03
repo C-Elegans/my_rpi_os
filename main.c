@@ -37,10 +37,10 @@ void task1(){
 }
 void notmain(){
 	uart_init();
-	char* str = malloc(300);
-	str = realloc(str,49);
-	str = realloc(str,200);
+	char *str = malloc(300);
+	str = realloc(str, 49);
+	str = realloc(str, 200);
 	free(str);
-	char* str2 = malloc(25);
+	char *str2 = malloc(25);
 	print_blocks();
 }

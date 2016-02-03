@@ -21,7 +21,6 @@ struct malloc_info {
 	int			free;
 
 	int			magic;
-
 };
 #define BLOCK_SIZE sizeof(struct malloc_info)
 void *sbrk(size_t increment){
@@ -64,10 +63,11 @@ struct malloc_info *request_space(struct malloc_info *last, size_t size){
 	block->magic = 0xDEADBEEF;
 	return block;
 }
-void merge_blocks(struct malloc_info* block){
-	struct malloc_info* curblock = block->next;
+void merge_blocks(struct malloc_info *block){
+	struct malloc_info *curblock = block->next;
 	int newsize = block->size;
-	while(curblock != NULL && curblock->free){
+
+	while (curblock != NULL && curblock->free) {
 		newsize += curblock->size + BLOCK_SIZE;
 		curblock = curblock->next;
 	}
@@ -76,8 +76,9 @@ void merge_blocks(struct malloc_info* block){
 }
 void split(struct malloc_info *block, int newsize){
 	int blocksize = block->size - newsize;
-	if(blocksize < 16) return;
-	struct malloc_info *block_ptr = (struct malloc_info*)(((int)block + BLOCK_SIZE + newsize + 3) & ~3);
+
+	if (blocksize < 16) return;
+	struct malloc_info *block_ptr = (struct malloc_info *)(((int)block + BLOCK_SIZE + newsize + 3) & ~3);
 	block_ptr->size = blocksize;
 	block_ptr->next = block->next;
 	block->next = block_ptr;
@@ -102,9 +103,8 @@ void *malloc(size_t size){
 			block = request_space(last, size);
 			if (!block) return NULL;
 		} else {
-			if(block->size > size + 4 + BLOCK_SIZE){
-				split(block,(size+3)&~3);
-			}
+			if (block->size > size + 4 + BLOCK_SIZE)
+				split(block, (size + 3) & ~3);
 			block->free = 0;
 			block->magic = 0x7777777;
 		}
@@ -130,10 +130,11 @@ void *realloc(void *ptr, size_t size){
 	if (!ptr)
 		return malloc(size);
 	struct malloc_info *block = get_block_ptr(ptr);
-	if (block->size >= size) //need to implement split
+	if (block->size >= size) { //need to implement split
 		size = (size + 3) & ~3;
-		split(block,size);
+		split(block, size);
 		return ptr;
+	}
 	void *new_ptr = malloc(size);
 	if (!new_ptr) return NULL;
 	memcpy(new_ptr, ptr, block->size);
@@ -141,31 +142,31 @@ void *realloc(void *ptr, size_t size){
 	return new_ptr;
 }
 void print_blocks(){
-	struct malloc_info* block = global_base;
+	struct malloc_info *block = global_base;
+
 	while (block != NULL) {
 		char str[33];
 		char str2[100];
 		puts("Block: ");
-		itoa((int)block,str,16);
+		itoa((int)block, str, 16);
 		puts(str);
 		puts("\r\n");
 		puts("Block size: ");
-		itoa((int)block->size,str,10);
+		itoa((int)block->size, str, 10);
 		puts(str);
 		puts("\r\n");
 		puts("Next block: ");
-		if(block->next == NULL){
+		if (block->next == NULL) {
 			puts("NULL");
-		}else{
-			itoa((int)block->next,str,16);
+		} else {
+			itoa((int)block->next, str, 16);
 			puts(str);
 		}
-		
+
 		puts("\r\n");
 		puts("Block free: ");
 		puts(block->free ? "1" : "0");
 		puts("\r\n\r\n");
 		block = block->next;
-		
 	}
 }
