@@ -64,6 +64,16 @@ struct malloc_info *request_space(struct malloc_info *last, size_t size){
 	block->magic = 0xDEADBEEF;
 	return block;
 }
+void merge_blocks(struct malloc_info* block){
+	struct malloc_info* curblock = block->next;
+	int newsize = block->size;
+	while(curblock != NULL && curblock->free){
+		newsize += curblock->size + BLOCK_SIZE;
+		curblock = curblock->next;
+	}
+	block->size = newsize;
+	block->next = curblock;
+}
 void split(struct malloc_info *block, int newsize){
 	int blocksize = block->size - newsize;
 	if(blocksize < 16) return;
@@ -74,7 +84,9 @@ void split(struct malloc_info *block, int newsize){
 	block_ptr->free = 1;
 	block->size = newsize;
 	block_ptr->magic = 0x55555555;
+	merge_blocks(block_ptr);
 }
+
 void *malloc(size_t size){
 	struct malloc_info *block = find_free_block(global_base, size);
 
@@ -90,6 +102,9 @@ void *malloc(size_t size){
 			block = request_space(last, size);
 			if (!block) return NULL;
 		} else {
+			if(block->size > size + 4 + BLOCK_SIZE){
+				split(block,(size+3)&~3);
+			}
 			block->free = 0;
 			block->magic = 0x7777777;
 		}
@@ -102,14 +117,7 @@ void free(void *ptr){
 	struct malloc_info *block = ((struct malloc_info *)ptr) - 1;
 	block->free = 1;
 	block->magic = 0x55555555;
-	struct malloc_info* curblock = block->next;
-	int newsize = block->size;
-	while(curblock != NULL && curblock->free){
-		newsize += curblock->size + BLOCK_SIZE;
-		curblock = curblock->next;
-	}
-	block->size = newsize;
-	block->next = curblock;
+	merge_blocks(block);
 }
 void *calloc(size_t nelm, size_t elsize){
 	void *mem = malloc(nelm * elsize);
