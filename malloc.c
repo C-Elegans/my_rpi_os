@@ -8,7 +8,9 @@
 
 #include "malloc.h"
 #include "string.h"
-
+#include "uart.h"
+#include "stdlib.h"
+#include "string.h"
 #define DEBUG
 void *brk = (void *)0x20000;
 
@@ -62,6 +64,17 @@ struct malloc_info *request_space(struct malloc_info *last, size_t size){
 	block->magic = 0xDEADBEEF;
 	return block;
 }
+void split(struct malloc_info *block, int newsize){
+	int blocksize = block->size - newsize;
+	if(blocksize < 16) return;
+	struct malloc_info *block_ptr = (struct malloc_info*)(((int)block + BLOCK_SIZE + newsize + 3) & ~3);
+	block_ptr->size = blocksize;
+	block_ptr->next = block->next;
+	block->next = block_ptr;
+	block_ptr->free = 1;
+	block->size = newsize;
+	block_ptr->magic = 0x55555555;
+}
 void *malloc(size_t size){
 	struct malloc_info *block = find_free_block(global_base, size);
 
@@ -96,15 +109,47 @@ void *calloc(size_t nelm, size_t elsize){
 	memset(mem, 0, nelm * elsize);
 	return mem;
 }
+
 void *realloc(void *ptr, size_t size){
 	if (!ptr)
 		return malloc(size);
 	struct malloc_info *block = get_block_ptr(ptr);
 	if (block->size >= size) //need to implement split
+		size = (size + 3) & ~3;
+		split(block,size);
 		return ptr;
 	void *new_ptr = malloc(size);
 	if (!new_ptr) return NULL;
 	memcpy(new_ptr, ptr, block->size);
 	free(ptr);
 	return new_ptr;
+}
+void print_blocks(){
+	struct malloc_info* block = global_base;
+	while (block != NULL) {
+		char str[33];
+		char str2[100];
+		puts("Block: ");
+		itoa((int)block,str,16);
+		puts(str);
+		puts("\r\n");
+		puts("Block size: ");
+		itoa((int)block->size,str,10);
+		puts(str);
+		puts("\r\n");
+		puts("Next block: ");
+		if(block->next == NULL){
+			puts("NULL");
+		}else{
+			itoa((int)block->next,str,16);
+			puts(str);
+		}
+		
+		puts("\r\n");
+		puts("Block free: ");
+		puts(block->free ? "1" : "0");
+		puts("\r\n\r\n");
+		block = block->next;
+		
+	}
 }
