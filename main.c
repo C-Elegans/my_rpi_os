@@ -42,16 +42,18 @@ void notmain(){
 	*intptr = 1;
 	
 	struct list* list = create_list(sizeof(int),intptr);
-	print_blocks();
 	for(int i=2;i<15;i++){
 		intptr =(int*) malloc(sizeof(int));
+		*intptr = (unsigned int)rand()% (unsigned int)255;
 		add_element(list,sizeof(int),intptr);
 	}
-	for(int i=0;i<12;i++){
-		struct list* list_prev = list;
-		list = list->next;
-		free(list_prev->payload);
-		remove_element(list);
+	struct list* node = list;
+	while (node != NULL) {
+		char str[10];
+		itoa(*(int*)node->payload,str,10);
+		puts(str);
+		puts("\r\n");
+		node = node->next;
 	}
 	
 }
