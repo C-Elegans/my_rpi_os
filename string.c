@@ -4,9 +4,9 @@
 void *memchr(const void *ptr, int c, int size){
 	return NULL;
 }
-void *memset(void *ptr, const void *c, int size){
+void *memset(void *ptr, int c, int size){
 	if (size > 3) {
-		void *c2 = (void *)((int)c | ((int)c << 8) | ((int)c << 16) | ((int)c << 24));
+		int c2 =((int)c | ((int)c << 8) | ((int)c << 16) | ((int)c << 24));
 		void *x;
 		for (x = ptr + size; x > ptr + 3; x -= 4) {
 			//PUT32(x,c2);

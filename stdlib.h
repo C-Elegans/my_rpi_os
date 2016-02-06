@@ -26,6 +26,7 @@ ldiv_t ldiv(long numerator, long denominator);
 
 int abs(int __x);
 long labs(long __x);
+float fabs(float x);
 
 
 long strtol(const char *, char **, int);

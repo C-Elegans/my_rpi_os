@@ -27,7 +27,7 @@ unsigned int MailboxRead(unsigned int channel){
 	}
 	return ra;
 }
-int video_init(){
+short* video_init(){
 	unsigned int rb;
 
 
@@ -51,5 +51,5 @@ int video_init(){
 
 
 	rb = GET32(0x40040020);
-	return rb;
+	return (short*)rb;
 }

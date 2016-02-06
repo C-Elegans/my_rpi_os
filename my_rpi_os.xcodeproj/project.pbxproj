@@ -9,6 +9,10 @@
 /* Begin PBXFileReference section */
 		0A2463D91C62A2700011936A /* list.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = list.c; sourceTree = "<group>"; };
 		0A2463DA1C62A2700011936A /* list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = list.h; sourceTree = "<group>"; };
+		0A2463DD1C668FCD0011936A /* color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = color.h; sourceTree = "<group>"; };
+		0A2463DE1C6691820011936A /* graphics.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = graphics.c; sourceTree = "<group>"; };
+		0A2463DF1C6691820011936A /* graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graphics.h; sourceTree = "<group>"; };
+		0A2463E01C669D250011936A /* dump.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = dump.text; sourceTree = "<group>"; };
 		0A3842D71C602FF60003F6B4 /* stdlib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = stdlib.c; sourceTree = "<group>"; };
 		0A3842D81C602FF60003F6B4 /* stdlib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stdlib.h; sourceTree = "<group>"; };
 		0A63660B1C5C143600DA0A74 /* malloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = malloc.c; sourceTree = "<group>"; };
@@ -83,6 +87,9 @@
 				0AABF99B1C5AE7B200748406 /* video.h */,
 				0A2463D91C62A2700011936A /* list.c */,
 				0A2463DA1C62A2700011936A /* list.h */,
+				0A2463DD1C668FCD0011936A /* color.h */,
+				0A2463DE1C6691820011936A /* graphics.c */,
+				0A2463DF1C6691820011936A /* graphics.h */,
 			);
 			name = Mylib;
 			sourceTree = "<group>";
@@ -90,6 +97,7 @@
 		0AABF97D1C5AE63500748406 = {
 			isa = PBXGroup;
 			children = (
+				0A2463E01C669D250011936A /* dump.text */,
 				0A2463D81C62A2170011936A /* Mylib */,
 				0A2463D61C62A1710011936A /* Asm */,
 				0A2463D71C62A18E0011936A /* Stdlib */,

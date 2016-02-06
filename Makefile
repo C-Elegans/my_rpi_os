@@ -1,7 +1,7 @@
 ARMGNU ?=/Users/mnolan/bin/yagarto-4.7.2/bin/arm-none-eabi
 AOPS = --warn
-override CFLAGS+= -Wall -Os -nostdlib -nostartfiles -ffreestanding -std=c99 -ggdb3 -flto -ffunction-sections
-OBJS=start.o main.o uart.o timer.o video.o string.o mem.h math.o maths.o stdlib.o interrupt.o irq.o malloc.o task.o task_switch.o list.o
+override CFLAGS+= -Wall -Os -nostdlib -nostartfiles -ffreestanding -std=c99 -ggdb3 -flto -ffunction-sections -mhard-float
+OBJS=start.o main.o uart.o timer.o video.o string.o mem.h math.o maths.o stdlib.o interrupt.o irq.o malloc.o task.o task_switch.o list.o graphics.o
 
 all: cstdlib.bin
 LDFLAGS=-flto -Os -lgcc

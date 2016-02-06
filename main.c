@@ -18,6 +18,8 @@
 #include "malloc.h"
 #include "stdlib.h"
 #include "list.h"
+#include "graphics.h"
+#include "color.h"
 extern int heap_start;
 volatile int on;
 extern int task_stack[];
@@ -38,22 +40,16 @@ void task1(){
 }
 void notmain(){
 	uart_init();
-	int* intptr = (int*)malloc(sizeof(int));
-	*intptr = 1;
-	
-	struct list* list = create_list(sizeof(int),intptr);
-	for(int i=2;i<15;i++){
-		intptr =(int*) malloc(sizeof(int));
-		*intptr = (unsigned int)rand()% (unsigned int)255;
-		add_element(list,sizeof(int),intptr);
-	}
-	struct list* node = list;
-	while (node != NULL) {
-		char str[10];
-		itoa(*(int*)node->payload,str,10);
-		puts(str);
-		puts("\r\n");
-		node = node->next;
-	}
+	short* video_fb = video_init();
+	memset(video_fb, 0,SCREEN_WIDTH * SCREEN_HEIGHT*2);
+	set_pixel(video_fb, 320,200,WHITE);
+	line(video_fb,(vec2) {0,0},(vec2){.5,.4},WHITE);
+	vec2 a =(vec2){0.5,0.5};
+	vec2 b =(vec2){0.7,0};
+	vec2 c =(vec2){0.9,0.6};
+	line(video_fb,a,b,RED);
+	line(video_fb,b,c,BLUE);
+	line(video_fb,c,a,GREEN);
+	triangle(video_fb,a,b,c,YELLOW);
 	
 }

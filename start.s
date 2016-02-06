@@ -41,8 +41,8 @@ hang:
 	ldr r0,=hang_str
 	
 	bl puts
-hang$:
-	b hang$
+	mov r0, #0x200000
+	bx r0
 .globl enable_fpu
 enable_fpu:
 	mrc p15, 0, r0, c1, c0, 2

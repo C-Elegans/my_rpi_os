@@ -9,6 +9,10 @@ long labs(long x){
 	if (x < 0) return -x;
 	return x;
 }
+float fabs(float x){
+	if (x < 0) return -x;
+	return x;
+}
 
 char char_lut[] = "0123456789ABCDEF";
 
