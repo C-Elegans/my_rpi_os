@@ -54,11 +54,11 @@ ldr pc,[pc,#20]			@;fiq
 .globl start_vector
 start_vector: .word _start
 undef_vector: .word hang
-svc_vector:	  .word yield
-prefetch_vector: .word null_interrupt
-data_vector:	.word null_interrupt
-irq_vector: .word null_interrupt
-fiq_vector: .word null_interrupt
+svc_vector:	  .word hang
+prefetch_vector: .word hang
+data_vector:	.word hang
+irq_vector: .word hang
+fiq_vector: .word hang
 
 .globl null_interrupt
 null_interrupt:

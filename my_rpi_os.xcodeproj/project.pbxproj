@@ -13,6 +13,8 @@
 		0A2463DE1C6691820011936A /* graphics.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = graphics.c; sourceTree = "<group>"; };
 		0A2463DF1C6691820011936A /* graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graphics.h; sourceTree = "<group>"; };
 		0A2463E01C669D250011936A /* dump.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = dump.text; sourceTree = "<group>"; };
+		0A2463E11C66A0DE0011936A /* vector.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vector.c; sourceTree = "<group>"; };
+		0A2463E21C66A0DE0011936A /* vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
 		0A3842D71C602FF60003F6B4 /* stdlib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = stdlib.c; sourceTree = "<group>"; };
 		0A3842D81C602FF60003F6B4 /* stdlib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stdlib.h; sourceTree = "<group>"; };
 		0A63660B1C5C143600DA0A74 /* malloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = malloc.c; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				0AABF98C1C5AE79D00748406 /* math.c */,
+				0AABF98D1C5AE79D00748406 /* math.h */,
 				0AABF9921C5AE7B200748406 /* start.s */,
 				0AABF9951C5AE7B200748406 /* task_switch.s */,
 				0AABF9961C5AE7B200748406 /* timer.h */,
@@ -57,7 +60,6 @@
 				0AABF9881C5AE79D00748406 /* interrupt.s */,
 				0A6366101C5C3DBE00DA0A74 /* interrupt.h */,
 				0AABF9891C5AE79D00748406 /* irq.s */,
-				0AABF98D1C5AE79D00748406 /* math.h */,
 				0AABF98E1C5AE79D00748406 /* maths.s */,
 			);
 			name = Asm;
@@ -90,6 +92,8 @@
 				0A2463DD1C668FCD0011936A /* color.h */,
 				0A2463DE1C6691820011936A /* graphics.c */,
 				0A2463DF1C6691820011936A /* graphics.h */,
+				0A2463E11C66A0DE0011936A /* vector.c */,
+				0A2463E21C66A0DE0011936A /* vector.h */,
 			);
 			name = Mylib;
 			sourceTree = "<group>";

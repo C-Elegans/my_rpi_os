@@ -30,6 +30,7 @@ void uart_init(){
 	PUT32(GPPUDCLK0, 0);
 
 	PUT32(AUX_MU_CNTL_REG, 2);
+	delayus(5000);
 }
 void putc(char c){
 #ifndef QEMU
@@ -46,6 +47,7 @@ void puts(char str[]){
 		putc(str[i]);
 		i++;
 	}
+	delayus(5000);
 }
 void uart_putint(unsigned int input){
 	//char buf[15];
@@ -83,6 +85,7 @@ void hexstring(unsigned int d){
 	hexstrings(d);
 	putc(0x0D);
 	putc(0x0A);
+	delayus(5000);
 }
 void uart_putfloat(float f){
 }

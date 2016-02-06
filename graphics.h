@@ -8,16 +8,9 @@
 
 #ifndef graphics_h
 #define graphics_h
-typedef struct{
-	float x;
-	float y;
-	float z;
-}vec3;
-typedef struct{
-	float x;
-	float y;
-}vec2;
+#include "vector.h"
 void set_pixel(short* framebuffer, int x, int y, short color);
 void line(void* framebuffer, vec2 a,vec2 b, short color);
 void triangle(short* framebuffer,vec2 a, vec2 b, vec2 c, short color);
+void set_pixelv(short* framebuffer, vec2 p, short color);
 #endif /* graphics_h */
