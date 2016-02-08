@@ -41,17 +41,15 @@ void task1(){
 void notmain(){
 	uart_init();
 	puts("Starting\r\n");
+	
 	short* video_fb = video_init();
 	memset(video_fb, 0x0001,SCREEN_WIDTH * SCREEN_HEIGHT*2);
 	set_pixel(video_fb, 320,200,WHITE);
-	line(video_fb,(vec2) {0,0},(vec2){.5,.4},WHITE);
-	vec2 a =(vec2){0.5,0.5};
-	vec2 b =(vec2){0.7,0.2};
-	vec2 c =(vec2){0.9,0.6};
-	set_pixelv(video_fb,a,WHITE);
-	line(video_fb,a,b,RED);
-	line(video_fb,b,c,BLUE);
-	line(video_fb,c,a,GREEN);
+	line(video_fb,(ivec2) {0,0},(ivec2){100,100},WHITE);
+	ivec2 a =(ivec2){200,200};
+	ivec2 b =(ivec2){400,90};
+	ivec2 c =(ivec2){550,450};
+	//set_pixel(video_fb,a,WHITE);
 	triangle(video_fb,a,b,c,YELLOW);
 	
 }

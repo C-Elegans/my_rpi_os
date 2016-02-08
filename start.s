@@ -42,7 +42,8 @@ hang:
 	
 	bl puts
 	mov r0, #0x200000
-	bx r0
+1:
+	b 1b
 .globl enable_fpu
 enable_fpu:
 	mrc p15, 0, r0, c1, c0, 2

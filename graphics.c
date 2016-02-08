@@ -16,17 +16,18 @@ void set_pixel(short* framebuffer, int x, int y, short color){
 	framebuffer+= y*SCREEN_WIDTH + x;
 	*framebuffer = color;
 }
+
 void set_pixelv(short* framebuffer, vec2 p, short color){
 	int x = p.x * SCREEN_WIDTH;
 	int y = p.y * SCREEN_HEIGHT;
 	framebuffer+=y*SCREEN_WIDTH + x;
 	*framebuffer = color;
 }
-void line(void* framebuffer, vec2 a, vec2 b, short color){
-	int x0 = a.x * SCREEN_WIDTH;
-	int x1 = b.x * SCREEN_WIDTH;
-	int y0 = a.y * SCREEN_HEIGHT;
-	int y1 = b.y * SCREEN_HEIGHT;
+void line(short* framebuffer, ivec2 a, ivec2 b, short color){
+	int x0 = a.x;
+	int x1 = b.x;
+	int y0 = a.y;
+	int y1 = b.y;
 	int dx = abs(x1-x0), sx = x0<x1 ? 1 : -1;
 	int dy = abs(y1-y0), sy = y0<y1 ? 1 : -1;
 	int err = (dx>dy ? dx : -dy)/2, e2;
@@ -51,20 +52,24 @@ int same_side(vec2 p, vec2 a, vec2 b, vec2 c){
  cp2 = CrossProduct(b-a, p2-a)
  if DotProduct(cp1, cp2) >= 0 then return true
  else return false*/
-int inside(vec2 p, vec2 a, vec2 b, vec2 c){
-	return same_side(p,a,b,c) && same_side(p,b,c,a) && same_side(p,c,a,b);
+int inside(ivec2 p, ivec2 a, ivec2 b, ivec2 c){
+	vec2 vp=(vec2){(float)p.x,(float)p.y};
+	vec2 va=(vec2){(float)a.x,(float)a.y};
+	vec2 vb=(vec2){(float)b.x,(float)b.y};
+	vec2 vc=(vec2){(float)c.x,(float)c.y};
+	return same_side(vp,va,vb,vc) && same_side(vp,vb,vc,va) && same_side(vp,vc,va,vb);
 }
-void triangle(short* framebuffer,vec2 a, vec2 b, vec2 c, short color){
-	puts("entering triangle code\r\n");
+/*void triangle(short* framebuffer,vec2 a, vec2 b, vec2 c, short color){
+	
 	float dx = 1.0f/(float)SCREEN_WIDTH;
 	float dy = .99f/(float)SCREEN_HEIGHT;
 	vec2 p, max;
-	puts("calculating min\r\n");
+	
 	p.x = fmin(a.x,b.x);
 	p.x = fmin(p.x,c.x);
 	p.y = fmin(a.y,b.y);
 	p.y = fmin(p.y,c.y);
-	puts("calculating max\r\n");
+	
 	max.x = fmax(a.x,b.x);
 	max.x = fmax(p.x,c.x);
 	max.y = fmax(a.y,b.y);
@@ -83,7 +88,35 @@ void triangle(short* framebuffer,vec2 a, vec2 b, vec2 c, short color){
 		}
 		
 	}
+}*/
+void triangle(short* framebuffer,ivec2 a, ivec2 b, ivec2 c, short color){
+	ivec2 p, max;
+	
+	p.x = fmin(a.x,b.x);
+	p.x = fmin(p.x,c.x);
+	p.y = fmin(a.y,b.y);
+	p.y = fmin(p.y,c.y);
+	
+	max.x = fmax(a.x,b.x);
+	max.x = fmax(p.x,c.x);
+	max.y = fmax(a.y,b.y);
+	max.y = fmax(p.y,c.y);
+	int x_initial = p.x;
+	for(;p.y<max.y;p.y++){
+		//puts("y: ");
+		//uart_putint((int)(p.y*SCREEN_HEIGHT));
+		for(p.x=x_initial;p.x<max.x;p.x++){
+			//puts("x: ");
+			//uart_putint((int)(p.x*SCREEN_WIDTH));
+			
+			if(inside(p,a,b,c)){
+				set_pixel(framebuffer,p.x,p.y,color);
+			}
+		}
+		
+	}
 }
+
 /*void line(int x0, int y0, int x1, int y1) {
  
  int dx = abs(x1-x0), sx = x0<x1 ? 1 : -1;

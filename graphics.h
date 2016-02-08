@@ -10,7 +10,7 @@
 #define graphics_h
 #include "vector.h"
 void set_pixel(short* framebuffer, int x, int y, short color);
-void line(void* framebuffer, vec2 a,vec2 b, short color);
-void triangle(short* framebuffer,vec2 a, vec2 b, vec2 c, short color);
+void line(short* framebuffer, ivec2 a,ivec2 b, short color);
+void triangle(short* framebuffer,ivec2 a, ivec2 b, ivec2 c, short color);
 void set_pixelv(short* framebuffer, vec2 p, short color);
 #endif /* graphics_h */

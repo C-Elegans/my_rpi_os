@@ -5,6 +5,12 @@ float fmax(float a, float b){
 float fmin(float a, float b){
 	return a<b?a:b;
 }
+int max(int a, int b){
+	return a>b?a:b;
+}
+int min(int a, int b){
+	return a<b?a:b;
+}
 
 unsigned int __udivmodsi4(unsigned int num, unsigned int den, unsigned int *rem_p){
 	unsigned int quot = 0, qbit = 1;
